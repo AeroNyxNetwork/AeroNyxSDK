@@ -1,20 +1,23 @@
 # Introduction
-This is a C++ demo that shows in detail how to use AeroNyx.
 
-In order to minimize dependencies, only one non-standard library is used here: `boost`. Its path is configured in cxx_demo/CMakeLists.txt.
+This is a C++ demo that illustrates how to effectively use AeroNyx. To keep dependencies minimal, we use only one non-standard library: `boost`. Its path is configured in the `cxx_demo/CMakeLists.txt`.
 
 # Project Structure
 
-- `crypto_tools` The implementations of all encryption algorithms used are here
-    - `aes` AES related algorithms
-    - `hash` HASH related algorithms
-    - `secp256k1` secp256k1 related algorithms
-    - `ecdh_manager` ECDH Accelerator
-    - `key_tools` Packages most of the algorithm interfaces
-    
-- `cxx_demo` Demo's CMakeLists.txt and implementation logic are in this folder
-    - `simple_key.h` Public and private key storage
-    - `simple_http.h` Http interface
-    - `simple_client_server.h` Managing each proxy connection
-    - `simple_client_item.h` Used for proxy traffic entering Node
-    - `simple_package.h` Traffic packet-based encryption and decryption
+The project is organized into several directories, each containing specific components of the encryption and network management functionalities:
+
+- **crypto_tools** - Contains all implementations of the encryption algorithms used in the project.
+    - **aes** - Houses AES-related algorithms.
+    - **hash** - Dedicated to HASH related algorithms.
+    - **secp256k1** - Contains secp256k1 related algorithms.
+    - **ecdh_manager** - Manages ECDH (Elliptic Curve Diffie-Hellman) operations, accelerating the process.
+    - **key_tools** - Packages most of the algorithm interfaces, facilitating their use across the project.
+
+- **cxx_demo** - This directory contains the demo's CMake configuration and the core implementation logic.
+    - **simple_key.h** - Manages storage for public and private keys.
+    - **simple_http.h** - Implements the Http interface for network communication.
+    - **simple_client_server.h** - Handles the management of each proxy connection.
+    - **simple_client_item.h** - Utilized for managing proxy traffic entering a node.
+    - **simple_package.h** - Responsible for packet-based traffic encryption and decryption.
+
+Each component is designed to be modular and reusable, making it easy to understand and integrate into larger projects.
