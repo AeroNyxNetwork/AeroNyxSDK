@@ -114,6 +114,7 @@ private:
                 boost::beast::flat_buffer buffer;
                 uint32_t size = websocket->read(buffer);
                 std::string encode_buf = std::string((char*)boost::asio::buffer(buffer.data()).data(), size);
+                std::cout << "WebSocketThreadFunc read:" << Byte2HexAsc(encode_buf) << std::endl;
                 DecodedWebsocketPackage decoded;
                 bool res = DecodePackage(encode_buf, decoded, GetEcdhKey());
                 if (!res) {

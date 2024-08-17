@@ -102,9 +102,9 @@ std::string TestGetToken() {
     std::string timestamp = GetTimestampNowStr();
     std::string sign = Byte2HexAsc(GetSignByPrivateKey(Sha256(timestamp), GetStorePrivateKey()));
     std::string target = (boost::format("/rpc/login?pubkey=%s&timestamp=%s&sign=%s") % pubkey % timestamp % sign).str();
-    std::string response = HttpGet("Your IP", "10003", target);
+    std::string response = HttpGet("35.201.204.72", "10003", target);
     std::cout << "response:" << response << std::endl;
-    boost::json::object json_obj = boost::json::parse(HttpGet("35.201.204.72", "10003", target)).as_object();
+    boost::json::object json_obj = boost::json::parse(response).as_object();
     if (json_obj["success"].as_int64() == 1) {
         return json_obj["data"].as_string().c_str();
     }
@@ -132,7 +132,7 @@ int main(){
         io_service, 
         false, 
         7788, 
-        "Your IP", 
+        "35.201.204.72", 
         10003, 
         HexAsc2ByteString("0463d92772a201344bdc249abcb498467796c1c90869c0604bc7e5e5e01e14f06cf95d466be872bb5d46703c361b8b6fca218e76011897519ce64f5ddef429da31"), 
         token);

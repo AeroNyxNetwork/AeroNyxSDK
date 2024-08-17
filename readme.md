@@ -59,7 +59,7 @@ Follow these steps to establish a secure TUN (Tunneling) protocol environment:
 
 ## Get Node List (GET)
 ### URL
-`http://node.suifly.network:10113/power/get_node2`
+`http://node.aeronyx.network:10113/power/get_node2`
 
 ### Arguments
 
@@ -100,7 +100,7 @@ The response is a JSON object with the following structure:
 
 ### URL
 Access the API through this endpoint:
-`http://node.suifly.network:10113/power/get_node_by_passcode`
+`http://node.aeronyx.network:10113/power/get_node_by_passcode`
 
 ### Arguments
 This endpoint requires the following parameters:

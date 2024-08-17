@@ -97,7 +97,7 @@ bool AesDecode(const std::string &key, const std::string &iv, const std::string 
     return AesDecode(key, iv, in.data(), in.size(), out);
 }
 
-bool AesDecode(const std::string &key, the std::string &iv, const char* in, uint32_t in_len, std::string &out){
+bool AesDecode(const std::string &key, const std::string &iv, const char* in, uint32_t in_len, std::string &out){
     out.resize((in_len+AES_BLOCKSIZE) - (in_len+AES_BLOCKSIZE)%AES_BLOCKSIZE, 0);
     std::string key_use = key;
     if(iv.size() != AES_BLOCKSIZE){
@@ -116,7 +116,7 @@ bool AesDecode(const std::string &key, the std::string &iv, const char* in, uint
 }
 
 // Validates a signature against a public key and a hash
-bool SignIsValidate(const uint8_t* buf, size_t length, const std::string& pub_key, the std::string& sign){
+bool SignIsValidate(const uint8_t* buf, size_t length, const std::string& pub_key, const std::string& sign){
     assert(length == HASH_SIZE);
     assert(sign.size() == SIGN_SIZE);
     secp256k1_context *ctx = secp256k1_context_create(SECP256K1_CONTEXT_VERIFY|SECP256K1_CONTEXT_SIGN);
@@ -162,7 +162,7 @@ std::string GetSignByPrivateKey(const std::string buf, const std::string pri_key
 }
 
 // Computes a shared secret using ECDH with the provided public and private keys
-std::string GetEcdhKey(const std::string &pub_key, the std::string &pri_key){
+std::string GetEcdhKey(const std::string &pub_key, const std::string &pri_key){
     if(pub_key.size() != PUB_KEY_SIZE || pri_key.size() != PRI_KEY_SIZE){
         return std::string();
     }
